@@ -280,17 +280,7 @@ CREATE SCHEMA IF NOT EXISTS mart;
 
 ### 3. Configure credentials locally
 
-Create a root-level `.env` file (do **not** commit it):
-
-```dotenv
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=ecommerce_dw
-DB_USER=postgres
-DB_PASSWORD=replace_with_your_local_password
-```
-
-Create a public `.env.example` with the same variable names and a placeholder password; do not put a real password in it:
+Create a root-level `.env` file:
 
 ```dotenv
 DB_HOST=localhost
@@ -299,8 +289,6 @@ DB_NAME=ecommerce_dw
 DB_USER=postgres
 DB_PASSWORD=YOUR_LOCAL_PASSWORD
 ```
-
-Include `.env.example` in the repository and keep the actual `.env` untracked.
 
 ### 4. Install Python dependencies and run the pipeline
 
@@ -406,26 +394,6 @@ data/raw/
 airflow/logs/
 airflow/config/
 ```
-
-Before committing, run `git status` and inspect the staged files after `git add`. Never commit `airflow/.env`, the root `.env`, or real credentials. (An ignore rule does not automatically untrack a file that was committed previously.)
-
-## Operational notes and limitations
-
-- This is a **batch pipeline with full-refresh source/fact loading and dimension upserts**. It does not implement incremental CDC, streaming ingestion, or distributed processing.
-- Airflow is **manually triggered** in the current DAG; scheduled execution can be configured later.
-- Row-count reconciliation and numeric checks are useful safeguards but do not constitute a comprehensive production data-quality framework; analytics-view reconciliation is currently a separate manual check.
-- Existing analytics views query the underlying mart tables; the Power BI Import model needs a refresh to reflect new data.
-- Product categories retain Olist's source-language labels. Reporting metadata and category translations can be added later.
-- Any extension to multiple concurrent DAG runs should account for full-refresh table operations and database locking. The DAG currently limits concurrent active runs to one.
-
-## Potential extensions
-
-- Incremental loading with watermarks or change-data-capture patterns
-- Additional automated tests for relationships, ranges and business rules
-- Time-aware product/seller performance for consistent Power BI filtering
-- Secret management and environment-specific configuration
-- CI checks for SQL, Python and Airflow DAG parsing
-
 ## Data attribution
 
 Dataset: **Brazilian E-Commerce Public Dataset by Olist**, hosted on [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce). All dataset rights and usage conditions remain with the original providers. This repository documents an independent educational data engineering implementation.
