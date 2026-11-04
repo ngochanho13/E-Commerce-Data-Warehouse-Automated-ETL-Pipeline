@@ -1,0 +1,7 @@
+services:
+  airflow-worker:
+    volumes:
+      - ../scripts:/opt/airflow/project/scripts:ro
+      - ../sql:/opt/airflow/project/sql:ro
+      - ../data:/opt/airflow/project/data:ro
+      - ../.env:/opt/airflow/project/.env:ro
