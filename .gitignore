@@ -1,9 +1,9 @@
-# Python environment
+# Python
 .venv/
 __pycache__/
 *.pyc
 
-# Credentials and secrets
+# Credentials
 .env
 .env.*
 !.env.example
@@ -11,4 +11,7 @@ __pycache__/
 # Airflow runtime
 airflow/logs/
 airflow/config/
-airflow/plugins/__pycache__/
+
+# Dataset
+data/*.csv
+data/raw/
