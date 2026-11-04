@@ -15,4 +15,3 @@ airflow/plugins/__pycache__/
 
 # Raw data
 data/*.csv
-data/raw/
