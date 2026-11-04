@@ -215,7 +215,7 @@ ecommerce-data-warehouse/
 │   └── requirements-airflow.txt
 ├── dashboard/
 │   └── ecommerce_sales_dashboard.pbix
-├── data/                         # Olist CSVs downloaded locally; not committed
+├── data/
 ├── scripts/
 │   ├── ingest_raw.py
 │   ├── run_pipeline.py
@@ -226,7 +226,7 @@ ecommerce-data-warehouse/
 │   ├── 04_create_dimensions.sql
 │   ├── 05_create_fact_order_items.sql
 │   └── 06_create_analytics_views.sql
-├── .env.example                  # Public sample; create using the example below
+├── .env.example
 ├── .gitignore
 ├── requirements.txt
 └── README.md
