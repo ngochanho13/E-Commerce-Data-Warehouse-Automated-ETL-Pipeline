@@ -221,12 +221,15 @@ ecommerce-data-warehouse/
 │   ├── run_pipeline.py
 │   └── validate_pipeline.py
 ├── sql/
+|   ├── 00_create_scheme.sql
+|   ├── 01_data_profiling.sql
 │   ├── 02_create_staging.sql
 │   ├── 03_complete_staging.sql
 │   ├── 04_create_dimensions.sql
 │   ├── 05_create_fact_order_items.sql
-│   └── 06_create_analytics_views.sql
-├── .env.example
+│   ├── 06_create_analytics_views.sql
+|   └── 07_validate_analytics_views.sql
+├── .env
 ├── .gitignore
 ├── requirements.txt
 └── README.md
